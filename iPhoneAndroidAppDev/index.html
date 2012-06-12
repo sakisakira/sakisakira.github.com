@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>iPhone & Android Application Development</title>
+</head>
+<body>
+<img src="./cover.jpg" width=145 height=198 align=right>
+<h1 align=center>iPhone & Andorid <br>クロスプラットフォーム<br>アプリケーション開発<br>サポートページ</h1>
+<br clear=all>
+
+ここには<a href="http://book.mycom.co.jp/book/978-4-8399-3414-9/978-4-8399-3414-9.shtml">本書</a>の正誤表及び、サンプルコードを掲載していきます。(まだ暫定版です)
+<p align=right>最終更新日 2010年3月1日</p>
+<hr>
+
+先ずは本書をお買い上げ下さりありがとうございます。
+残念ながら、誤りが多く含まれておりましたので、わかったものから順次このページに書いてきます。
+細かい事項については、増版などの機会がもしあればその際に修正させて頂きますが、ここでは大きな間違いを記していきます。
+
+<h3>第2章</h3>
+
+<ul>
+<li>37ページの「main.xml」の SPCanvas の要素に「&lt;android:id="@+id/sp_canvas"&gt;」を追加して下さい。 (2010.02.25)
+</ul>
+
+<a href="SharePaint_ch2_20100223.zip">サンプルコードダウンロード</a>
+
+<h3>第3章</h3>
+
+<ul>
+<li>60ページの「SPCanvas.h」内のインスタンス変数宣言に「int width, height;」が抜けています。また、「bool on_touch;」は「bool on_stroke;」の誤りです。 (2010.02.25)
+<li>65ページのコード内「kCGImageAlphaPremultipliedLast」は「kCGImageAlphaPremultipliedFirst」の誤りです。 (2010.02.25)
+</ul>
+
+<a href="SharePaint_ch3_20100223.zip">サンプルコードダウンロード</a>
+
+<h3>第4章</h3>
+
+<ul>
+<li>87ページのコード「String[] xys = tag_point[1].split("\\s");」の前に「if (tag_point.length < 2) return;」が必要です。 (2010.02.25)
+<li>92ページの「SPCanvas.java」のコード内で「stroke.layer = this.layer_index;」という行がありますが、ここではまだレイヤーを扱っていないのでこの行は削除して下さい。
+<li>96ページの冒頭のコード「Long last_time = hist_time.last();」は動きません。「Long last_time = (new TreeSet&lt;Long&gt;(hist_times)).last();」として下さい。 (2010.02.25)
+<li>99ページのコード内で「SPStroke stroke;」という宣言を使っています。あらかじめSPStrokeのデフォルトコンストラクタを作成して下さい。必要ならサンプルコードをダウンロードし、参照して下さい。 (2010.02.25)
+</ul>
+
+<a href="SharePaint_ch4android_20100224.zip">サンプルコードダウンロード(Android)</a><br>
+<a href="SharePaint_ch4iphone_20100223.zip">サンプルコードダウンロード(iPhone)</a>
+
+<h3>第5章</h3>
+<a href="SharePaint_ch5_20100225.zip">サンプルコードダウンロード</a>
+
+<h3>第6章</h3>
+
+<ul>
+<li> 156ページのコード末尾「self-&gt;sync_agent.get_strokes(self);」は「「self-&gt;sync_agent.get_strokes();」の誤りです。 (2010.02.25)
+<li>172ページのコード内「stroke.layer = this.layer_index;」は削除して下さい。(2010.02.25)
+</ul>
+<a href="SharePaint_ch6android_20100224.zip">サンプルコードダウンロード(Android)</a><br>
+<a href="SharePaint_ch6iphone_20100224.zip">サンプルコードダウンロード(iPhone)</a>
+
+<h3>第7章</h3>
+
+<ul>
+<li>215ページのHSBColorPicker.java内「setResult(RESULT_OK, intent);」の前の行に「Intent intent = new Intent();」を挿入して下さい。(2010.02.25)
+<li>216ページ冒頭: RadioGroupの外側にあらかじめ水平方向(orientation="horizontal")のLinearLayoutを作成しておいて下さい。 (2010.02.25)
+<li>217ページのPenSettingsView.javaのshowHSBColorPicker()メソッドの定義の前に、あらかじめSharePaintクラスに定数ShowHSBColorPickerIdを「static final int ShowHSBColorPickerId = 1;」などのように定義しておいて下さい。 (2010.02.25)
+<li>219ページで新しいActivityを表示させる前にAndroidManifest.xmlの更新も忘れないようにして下さい。 (2010.02.25)
+<li>226ページのSatBriBox.javaのtouchAt()メソッド定義の前にHSBColorPickerのクラス変数を「static int pen_color;」などのように準備しておいて下さい。(2010.02.25)
+<li>229ページでメソッドapplyHSBColorPicker:の定義の前にSharePaintViewControllerクラスに宣言「IBOutlet UIView* hsbcolbox;」を加え、Interface Builder側でカラーピッカーダイアログ内のペンの色を表示するUIViewと結び付けておいて下さい。 (2010.02.25)
+<li>229ページでメソッドapplyHSBColorPicker:の定義の前にSharePaintViewControllerクラスに宣言「IBOutlet UIButton* pencolbox;」を加え、Interface Builder側でペン情報ダイアログ内のペンの色を表示するUIButtonと結び付けておいて下さい。 (2010.02.25)
+<li>231ページ: Android版での okButtonPressed()メソッドもiPhone版と同様に修正しておいて下さい。(2010.02.25)
+<li>233ページ: 「Spinner draw_mode_choice;」を宣言するように書いてますが、「Spinner draw_mode_button;」の宣言の誤りです。(2010.02.25)
+<li>237ページ: 「Android番」→「Android版」(2010.02.25)
+</ul>
+
+<a href="SharePaint_ch7android_20100225.zip">サンプルコードダウンロード(Android)</a><br>
+<a href="SharePaint_ch7iphone_20100225.zip">サンプルコードダウンロード(iPhone)</a>
+
+<h3>第8章</h3>
+
+<ul>
+<li>240ページ: 「OnItemSelectedListener」は「OnItemClickedListener」の誤りでした。ご指摘ありがとうございます。(2010.05.24)
+<li>242ページ: ボタン「info_btn」はmain.xmlの中に配置して下さい。 (2010.02.25)
+<li>243ページ: SPCanvas.javaの setNickname()メソッド内の「this.user_nickname != nickname」は「!this.user_nickname.equals(nickname)」の方が好ましいです。 (2010.02.25)
+<li>252ページ冒頭のSharePaintViewController.h内に「IBOutlet UITableView* search_result_table; std::vector&lt;std::string&gt; canvas_list;」も加えて下さい。(2010.02.25)
+</ul>
+
+<a href="SharePaint_ch8android_20100225.zip">サンプルコードダウンロード(Android)</a><br>
+<a href="SharePaint_ch8iphone_20100225.zip">サンプルコードダウンロード(iPhone)</a>
+
+<h3>第9章</h3>
+
+<ul>
+<li>274ページ: SPCanvasに「IBOutlet UISlider* zoom_slider;」の宣言を足し、Interface Builder上で追加したスライダーと結びつけて下さい。 (2010.02.25)
+<li>287ページ: spuitAtメソッドについてはiPhone版でも修正が必要となります。詳しくはサンプルコードを参照して下さい。 (2010.02.25)
+<li>287ページ: Android版でも実際にはtouchDraggedメソッド内の「invalidate(rect);」のrectの値を調整しないと、描画がきちんとできませんので修正が必要です。(2010.02.25)
+</ul>
+
+<a href="SharePaint_ch9android_20100225.zip">サンプルコードダウンロード(Android)</a><br>
+<a href="SharePaint_ch9iphone_20100225.zip">サンプルコードダウンロード(iPhone)</a>
+
+<hr>
+<h4>更新履歴</h4>
+2010.03.01 Twitterアカウントへのリンクや「＜＞」を「&lt;&gt;」への変更など細かい修正 
+<br>
+2010.02.25  サポートページ作成
+<hr>
+筆者への連絡については<a href="http://jptwitterhelp.blogspot.com/">Twitter</a>の「<a href="http://twitter.com/sakira/">@sakira</a>」に呼びかけて頂ければと存じます。
+</body></html>
